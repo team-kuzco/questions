@@ -1,0 +1,24 @@
+{
+  "name": "questions",
+  "version": "1.0.0",
+  "description": "sdc readme",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-kuzco/questions.git"
+  },
+  "author": "chris woodby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-kuzco/questions/issues"
+  },
+  "homepage": "https://github.com/team-kuzco/questions#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
