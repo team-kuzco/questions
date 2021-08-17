@@ -1,1 +1,35 @@
-sdc readme
+***the GET request for the questions list will require the following paramerters***
+
+1. product_id type=integer Specifies the product for which to retrieve questions.
+
+2. page type=integer	Selects the page of results to return. Default 1.
+
+3. count	type=integer Specifies how many results per page to return. Default 5.
+
+***the GET request for the list of answers (does not include reported answers) reqiures the paramerter***
+
+question_id	type=integer Required ID of the question for wich answers are needed
+
+and the following query paramerters
+
+1. page	type=integer Selects the page of results to return. Default 1.
+
+2. count type=integer Specifies how many results per page to return. Default 5.
+
+***the POST request for adding a new question requires the following body paramerters***
+
+1. body type=text	Text of question being asked
+
+2. name type=text	Username for question asker
+
+3. email	type=text	Email address for question asker
+
+4. product_id type=integer Required ID of the Product for which the question is posted
+
+*** the POST request for adding a new answer requires the following paramerters***
+
+1. question_id type=integer required ID of the question to post the answer to.
+
+as well as the following body parameters
+
+

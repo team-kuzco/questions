@@ -6,7 +6,7 @@ CREATE TABLE questions (
   id int NOT NULL AUTO_INCREMENT,
   product_id int NOT NULL,
   body varchar (500) NOT NULL,
-  date_written int NOT NULL,
+  date_written BIGINT NOT NULL,
   asker_name varchar (200) NOT NULL,
   asker_email varchar (200) NOT NULL,
   reported int NOT NULL,
@@ -18,12 +18,13 @@ CREATE TABLE answers (
   id int NOT NULL AUTO_INCREMENT,
   question_id int NOT NULL,
   body varchar (500) NOT NULL,
-  date_written int NOT NULL,
+  date_written BIGINT NOT NULL,
   answerer_name varchar (200) NOT NULL,
   answerer_email varchar (200) NOT NULL,
   reported int NOT NULL,
   helpful int NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  photos int
 );
 
 CREATE TABLE answersPhotos (
@@ -37,10 +38,8 @@ CREATE TABLE answersPhotos (
 ALTER TABLE answers
 ADD FOREIGN KEY (question_id) REFERENCES questions(id);
 
-
 ALTER TABLE answersPhotos
 ADD FOREIGN KEY (answer_id) REFERENCES answers(id);
-
 
 
 LOAD DATA LOCAL INFILE '/home/chris/Downloads/questions.csv'
