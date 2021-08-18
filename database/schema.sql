@@ -11,7 +11,8 @@ CREATE TABLE questions (
   asker_email varchar (200) NOT NULL,
   reported int NOT NULL,
   helpful int NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  answers int
 );
 
 CREATE TABLE answers (
@@ -40,6 +41,9 @@ ADD FOREIGN KEY (question_id) REFERENCES questions(id);
 
 ALTER TABLE answersPhotos
 ADD FOREIGN KEY (answer_id) REFERENCES answers(id);
+
+CREATE INDEX question_id ON answers(question_id);
+CREATE INDEX product_id ON questions(product_id);
 
 
 LOAD DATA LOCAL INFILE '/home/chris/Downloads/questions.csv'
