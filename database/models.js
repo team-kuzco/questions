@@ -4,13 +4,13 @@ var connection = require('./db.js');
 var getQuestions = (req, callback) => {
   var questionContainer = {};
   questionContainer.product_id = req.query.product_id;
-  connection.query('SELECT * FROM questions WHERE product_id = ?', [req.query.product_id], (error, result) => {
+  connection.query('SELECT * FROM questions WHERE product_id = ? AND reported = 0', [req.query.product_id], (error, result) => {
     if (error) {
       callback(error, null);
     } else {
       for (let i = 0; i < result.length; i += 1) {
         result[i].date_written = new Date(result[i].date_written)
-        connection.query(`SELECT * FROM answers WHERE question_id = ${result[i].id}`, (error, answersResult) => {
+        connection.query(`SELECT * FROM answers WHERE question_id = ${result[i].id} AND reported = 0`, (error, answersResult) => {
           if (error) {
             callback(error);
           } else {
@@ -36,8 +36,8 @@ var getAnswers = (req, callback) => {
   var answersContainer = {};
   answersContainer.question = req.params.question_id;
   answersContainer.page = 0;
-  answersContainer.count = 5;
-  connection.query('SELECT * FROM answers WHERE question_id = ?', [req.params.question_id], (error, result) => {
+  answersContainer.count = req.params.count || 5;
+  connection.query('SELECT * FROM answers WHERE question_id = ? AND reported = 0', [req.params.question_id], (error, result) => {
     if (error) {
       callback(error, null);
     } else {

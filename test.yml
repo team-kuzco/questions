@@ -1,0 +1,15 @@
+config:
+  target: 'http://localhost:3003/qa/questions?product_id=1'
+  phases:
+    - duration: 60
+      arrivalRate: 100
+scenarios:
+  - flow:
+    - post:
+        url: "/post"
+        json:
+          product_id: 1
+          body: "why are there so many of these?"
+          date_written: 1596584232121
+          asker_name: "chris"
+          asker_email: "chris@att.com"
