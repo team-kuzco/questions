@@ -2,7 +2,7 @@ var express = require('express');
 var connection = require('../database/db.js');
 var model = require('../database/models.js');
 var app = express();
-var port = 3003;
+var port = 5050;
 var fs = require('fs');
 
 app.use(express.json());
